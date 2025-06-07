@@ -64,7 +64,7 @@ namespace API.Persistence
             MySqlConnection con = new MySqlConnection(_conString);
             con.Open();
             MySqlCommand cmd;
-            _sql = "SELECT count(*) FROM tickets LEFT JOIN priority ON tickets.priority_PriorityID = priority.PriorityID INNER JOIN users on tickets.ByUser = users.User_id WHERE priority.PriorityName = 'Critical' and tickets.ByUser  and users.company_CompanyID = (select company_CompanyID from users where User_id = 63)";
+            _sql = "SELECT count(*) FROM tickets LEFT JOIN priority ON tickets.priority_PriorityID = priority.PriorityID INNER JOIN users on tickets.ByUser = users.User_id WHERE priority.PriorityName = 'Critical' and tickets.ByUser  and users.company_CompanyID = (select company_CompanyID from users where User_id = @UID)";
             cmd = new MySqlCommand(_sql, con);
             cmd.Parameters.Add(new MySqlParameter("@UID", UID));
             try

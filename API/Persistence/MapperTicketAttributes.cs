@@ -102,6 +102,7 @@ namespace API.Persistence
             cmd = new MySqlCommand(_sql, con);
             cmd.Parameters.Add(new MySqlParameter("@CAT", Cat));
             cmd.ExecuteNonQuery();
+            con.Close();
         }
         public void PermanentlyDelete_DeleteComments(int UID)
         {
